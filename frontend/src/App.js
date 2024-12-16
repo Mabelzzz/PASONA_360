@@ -22,21 +22,39 @@
 //   );
 // }
 
+// // export default App;
+// import React from "react";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import Login from "./components/Login";
+// import Upload from "./components/Upload";
+
+// function App() {
+//     return (
+//         <Router>
+//             <Routes>
+//                 <Route path="/login" element={<Login />} />
+//                 <Route path="/upload" element={<Upload />} />
+//             </Routes>
+//         </Router>
+//     );
+// }
+
 // export default App;
+
+
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
-import Upload from "./components/Upload";
 
 function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/upload" element={<Upload />} />
+                <Route path="/" element={<Login />} />
             </Routes>
         </Router>
     );
 }
 
 export default App;
+
