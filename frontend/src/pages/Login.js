@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import logo from "../assets/pasona-logo.png"; // Import PASONA logo
 import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // Initialize navigate
 
   const handleLogin = async () => {
     try {
@@ -14,8 +16,11 @@ const Login = () => {
       });
       alert("Login successful!");
       console.log("Token:", response.data.token);
+
+      // Redirect to /home
+      navigate("/home");
     } catch (error) {
-      alert(error.response.data.message || "Login failed!");
+      alert(error.response?.data?.message || "Login failed!");
     }
   };
 
