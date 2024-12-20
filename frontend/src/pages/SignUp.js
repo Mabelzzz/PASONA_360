@@ -1,17 +1,20 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import logo from "../assets/pasona-logo.png";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
-
+  const navigate = useNavigate(); // Initialize navigate
+  
   const handleSignUp = () => {
-    if (!isChecked) {
-      alert("Please agree to the Terms of Use.");
-      return;
-    }
+    // if (!isChecked) {
+    //   alert("Please agree to the Terms of Use.");
+    //   return;
+    // }
     alert("Sign Up Successful!");
+    navigate("/home");
   };
 
   return (

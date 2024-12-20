@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import logo from "../assets/pasona-logo.png"; // Import PASONA logo
-import axios from "axios";
+// import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -9,19 +9,19 @@ const Login = () => {
   const navigate = useNavigate(); // Initialize navigate
 
   const handleLogin = async () => {
-    try {
-      const response = await axios.post("http://localhost:5001/api/auth/login", {
-        email,
-        password,
-      });
+    // try {
+    //   const response = await axios.post("http://localhost:5001/api/auth/login", {
+    //     email,
+    //     password,
+    //   });
       alert("Login successful!");
-      console.log("Token:", response.data.token);
+      // console.log("Token:", response.data.token);
 
       // Redirect to /home
       navigate("/home");
-    } catch (error) {
-      alert(error.response?.data?.message || "Login failed!");
-    }
+    // } catch (error) {
+    //   alert(error.response?.data?.message || "Login failed!");
+    // }
   };
 
   return (

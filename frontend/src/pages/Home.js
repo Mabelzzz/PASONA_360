@@ -1,12 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/pasona-logo.png";
+import logo_home from "../assets/home_button.png";
 import survey_logo from "../assets/survey.png";
 import survey_big from "../assets/survey_big.png";
 import contact_logo from "../assets/contact.png";
 import question_logo from "../assets/question.png";
+import { AiOutlineCloudUpload } from "react-icons/ai";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/upload");
+  };
   return (
     <div className="flex h-screen bg-grayLight">
       {/* Sidebar */}
@@ -25,11 +32,25 @@ const Home = () => {
         {/* Navigation */}
         <nav className="space-y-6">
           <Link
-            to="/survey"
+            to="/home"
             className="flex items-center space-x-2 text-primary px-4 py-2 cursor-pointer hover:bg-grayLight rounded"
           >
+            <img src={logo_home} alt="Survey Logo" className="h-6" />
+            <span className="font-semibold">Home</span>
+          </Link>
+          <Link
+            to="/all-survey"
+            className="flex items-center space-x-2 text-textDark px-4 py-2 cursor-pointer hover:bg-grayLight rounded"
+          >
             <img src={survey_logo} alt="Survey Logo" className="h-6" />
-            <span className="font-semibold">Survey</span>
+            <span className="font-semibold">All Surveys</span>
+          </Link>
+          <Link
+            to="/upload"
+            className="flex items-center space-x-2 text-textDark px-4 py-2 cursor-pointer hover:bg-grayLight rounded"
+          >
+            <AiOutlineCloudUpload className="text-primary cursor-pointer text-xl"/>
+            <span className="font-semibold">Upload Survey</span>
           </Link>
           <Link
             to="/contact"
@@ -68,7 +89,9 @@ const Home = () => {
             </div>
 
             {/* Create Survey Button */}
-            <button className="bg-primary text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-secondary transition">
+            <button className="bg-primary text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-secondary transition"
+              onClick={handleButtonClick}
+            >
               Create Survey
             </button>
           </div>
