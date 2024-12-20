@@ -1,13 +1,17 @@
-import React, { useState } from "react";
-import Survey from "./Survey";
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+// import Survey from "./Survey";
 import logo from "../assets/pasona-logo.png";
 
-const IntroPage = ({ surveyData }) => {
-    const [startSurvey, setStartSurvey] = useState(false);
+const IntroPage = () => {
+    const location = useLocation();
+    const surveyData = location.state?.parsedData || [];
+    const navigate = useNavigate();
 
-    if (startSurvey) {
-        return <Survey data={surveyData} />;
-    }
+    const handleButtonClick = () => {
+        console.log("Start Survey", surveyData);
+        navigate("/survey", { state: { surveyData } });
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -21,7 +25,7 @@ const IntroPage = ({ surveyData }) => {
                     Please keep all information related to this survey in confidentiality. Don’t share your answer with internal and external parties.
                 </p>
                 <button
-                    onClick={() => setStartSurvey(true)}
+                    onClick={handleButtonClick}
                     className="mt-6 bg-gray-800 text-white py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-200"
                 >
                     START

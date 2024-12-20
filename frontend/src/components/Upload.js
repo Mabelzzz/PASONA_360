@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as XLSX from "xlsx";
-import { Link } from "react-router-dom";
-import IntroPage from "../pages/IntroPage";
+import { Link, useNavigate } from "react-router-dom";
+// import IntroPage from "../pages/IntroPage";
 import logo from "../assets/pasona-logo.png";
 import logo_home from "../assets/home_button.png";
 import survey_logo from "../assets/survey.png";
@@ -22,6 +22,8 @@ const Upload = () => {
     const [showSurvey, setShowSurvey] = useState(false);
 
     const columns = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)); // A-Z
+    const navigate = useNavigate();
+
 
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
@@ -88,7 +90,9 @@ const Upload = () => {
     };
 
     if (showSurvey) {
-        return <IntroPage data={parsedData} />;
+        console.log("parsedData: ", parsedData);
+        navigate("/intro", { state: { parsedData } });
+        // return <IntroPage data={parsedData} />;
     }
 
     return (
